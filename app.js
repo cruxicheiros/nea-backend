@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 var logger = require('morgan');
-c cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 const index = require('./routes/index');
