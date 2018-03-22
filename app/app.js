@@ -3,12 +3,18 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const validator = require('validator');
 const dbConnector = require('./dbConnector.js');
+const exphbs  = require('express-handlebars');
+
 
 let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static('public'));
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 
 app.get("/assignments/", function (req, res) { /* add search by due date functionality */
@@ -26,6 +32,10 @@ app.get("/assignments/", function (req, res) { /* add search by due date functio
             res.send(results);
             console.log('results', results);
         });
+});
+
+app.get("/", function (req, res) {
+    res.render('index', {showGroups: true, group : [{title: 'Group', description: 'A group'},{title: 'Group 2', description: 'A group'}]});
 });
 
 app.get("/assignments/:assignment_id", function (req, res) {

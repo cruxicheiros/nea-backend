@@ -1,0 +1,22 @@
+<h1>Welcome, {{name}}</h1>
+
+{{#if showGroups}}
+    <h2>My Groups</h2>
+    {{#each group}}
+        {{> subsection}}
+    {{/each}}
+{{/if}}
+
+{{#if showAssignments}}
+    <h2>My Assignments</h2>
+    {{#each assignment}}
+        {{> subsection}}
+    {{/each}}
+{{/if}}
+
+{{#if showSubmissions}}
+    <h2>My Submissions</h2>
+    {{#each submission}}
+        {{> subsection}}
+    {{/each}}
+{{/if}}

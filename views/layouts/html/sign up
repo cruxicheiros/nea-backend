@@ -1,0 +1,14 @@
+<!--https://www.w3.org/TR/html52/sec-forms.html-->
+
+<html>
+	<div id = 'login_box'>
+		<form method="post"
+        enctype="application/x-www-form-urlencoded"
+        action="/login">
+			<div><label> Username <input type=text></label></div>
+			<div><label> Password <input type=password></label></div>
+			<div><button>Log In</button></div>
+		</form>
+	</div>
+
+</html>
