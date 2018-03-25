@@ -126,12 +126,17 @@ router.get("/groups/:group_id", function (req, res) {
     if (validator.isInt(req.params['group_id'])) {
         dbConnector.searchGroups({'group_id': req.params.group_id})
             .then(function (results) {
-                res.send(results);
-                console.log('results', results);
+                if (results.length > 0) {
+                    res.send(results);
+                } else {
+                    res.status(404);
+                    res.send("404 Not Found");
+                }
             });
 
     } else {
-        res.send([]);
+        res.status(404);
+        res.send("404 Not Found");
     }
 });
 
